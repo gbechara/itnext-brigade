@@ -29,6 +29,8 @@ secrets:
 ```bash
 az aks create -g aks -c 2  -n brigade  -k 1.11.3
 az aks get-credentials -g aks -n brigade
+#Helm one liner 
+kubectl create serviceaccount -n kube-system tiller; kubectl create clusterrolebinding tiller --clusterrole=cluster-admin --serviceaccount=kube-system:tiller; helm init --service-account tiller
 ```
 
 ### Install Brigade
@@ -84,6 +86,8 @@ draft up
 ### Demo flow
 
 - [ ] Explain why in-cluster pipelines
+- [ ] Use helm to deply brigade and kashti
+- [ ] Update github webook
 - [ ] Explain brigade.js steps
 - [ ] Push changes
 - [ ] Observe with `watch kubectl get pods`
