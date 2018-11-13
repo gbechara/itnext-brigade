@@ -33,7 +33,7 @@ az aks get-credentials -g aks -n brigade
 
 ```
 helm repo add brigade https://azure.github.io/brigade
-helm install -n brigade brigade/brigade --set vacuum.enabled=false --set api.service.type=LoadBalancer
+helm upgrade --install brigade brigade/brigade --set rbac.enabled=true --set vacuum.enabled=false --set api.service.type=LoadBalancer
 ```
 
 ### Kashti
@@ -41,12 +41,16 @@ helm install -n brigade brigade/brigade --set vacuum.enabled=false --set api.ser
 helm upgrade --install kashti https://raw.githubusercontent.com/ams0/itnext-brigade/master/helm/kashti/kashti-0.1.0.tgz  --set service.type=LoadBalancer
 ```
 
+### Create Brigade project
+
 ### Create Github webhook
 ```
 export GH_WEBHOOK=http://$(kubectl get svc brigade-brigade-github-gw -o jsonpath='{.status.loadBalancer.ingress[0].ip}'):7744/events/github
 #make sure you have a GITHUB_AUTH_TOKEN env ~~variable~~
 jthooks add ams0/itnext-brigade $GH_WEBHOOK GithubSecret
 ```
+
+
 
 ### Useful links
 
