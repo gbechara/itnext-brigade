@@ -1,6 +1,6 @@
-project: "repo/kube-con-2018"
-repository: "github.com/repo/kube-con-2018"
-cloneURL: "https://github.com/repo/kube-con-2018"
+project: "repo/itnext-2018"
+repository: "github.com/repo/itnext-2018"
+cloneURL: "https://github.com/repo/itnext-2018"
 sharedSecret: "password-replace"
 github:
     token: ""
