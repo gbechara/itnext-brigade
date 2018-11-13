@@ -69,6 +69,18 @@ jthooks add ams0/itnext-brigade $GH_WEBHOOK GithubSecret
 kubectl delete po -l component=job ; kubectl delete po -l component=build
 ```
 
+### Draft
+
+Avoid the [fear of empty source file](https://ayende.com/blog/184993-A/the-fear-of-an-empty-source-file) with [Draft](https://draft.sh/)
+
+```bash
+draft init
+draft pack-repo add https://github.com/technosophos/draft-brigade
+draft create -p brigade-gateway
+draft config set registry theregistry.azurecr.io
+draft up
+```
+
 ### Demo flow
 
 - [ ] Explain why in-cluster pipelines
