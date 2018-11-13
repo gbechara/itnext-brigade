@@ -65,12 +65,6 @@ export GH_WEBHOOK=http://$(kubectl get svc brigade-brigade-github-gw -o jsonpath
 jthooks add ams0/itnext-brigade $GH_WEBHOOK GithubSecret
 ```
 
-### Clean up jobs and workers
-
-```bash
-kubectl delete po,secret -l component=job ; kubectl delete po,secret -l component=build
-```
-
 ### Draft
 
 Avoid the [fear of empty source file](https://ayende.com/blog/184993-A/the-fear-of-an-empty-source-file) with [Draft](https://draft.sh/)
@@ -96,6 +90,21 @@ draft up
 - [ ] Clean up
 - [ ] Show the [voting site](http://hero.westeurope.cloudapp.azure.com:8080) , change the color, push
 - [ ] Observe the change
+
+### Clean up jobs and workers
+
+```bash
+kubectl delete po,secret -l component=job ; kubectl delete po,secret -l component=build
+```
+
+### Clean up the cluster
+
+```bash
+helm delete itnext-brigade --purge
+helm delete draft --purge
+helm delete brigade --purge
+helm delete kashti --purge
+```
 
 ### Useful links
 
