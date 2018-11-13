@@ -1,0 +1,17 @@
+project: "repo/kube-con-2018"
+repository: "github.com/repo/kube-con-2018"
+cloneURL: "https://github.com/repo/kube-con-2018"
+sharedSecret: "password-replace"
+github:
+    token: ""
+secrets:
+    acrServer: 
+    acrName: 
+    azServicePrincipal: 
+    azClientSecret: 
+    azTenant: 
+    OWNER: 
+    CONSUMER_KEY: 
+    CONSUMER_SECRET: 
+    ACCESS_TOKEN: 
+    ACCESS_SECRET: 
