@@ -94,7 +94,7 @@ draft up
 - [ ] Observe with kashti
 - [ ] Observe with `brigadeterm`
 - [ ] Clean up
-- [ ] Show the voting site, change the color, push
+- [ ] Show the [voting site](http://hero.westeurope.cloudapp.azure.com:8080) , change the color, push
 - [ ] Observe the change
 
 ### Useful links
@@ -104,5 +104,6 @@ draft up
 [Brigadeterm](https://github.com/slok/brigadeterm/releases)
 [jthooks](https://github.com/ceejbot/jthooks)
 [Build a brigade gateway in 5 minutes](http://technosophos.com/2018/04/23/building-brigade-gateways-the-easy-way.html)
+[Azure Cointainer Registry Builds](https://docs.microsoft.com/en-us/azure/container-registry/container-registry-tutorial-quick-task)
 
 Heavily based on the great work from [chzbrgr71](https://github.com/chzbrgr71/kube-con-2018)
