@@ -47,9 +47,10 @@ events.on("after", (event, project) => {
     var slack = new Job("slack-notify", "technosophos/slack-notify:latest", ["/slack-notify"])
     slack.env = {
       SLACK_WEBHOOK: project.secrets.SLACK_WEBHOOK,
+      IMAGETAG: ${imageTag}
       SLACK_USERNAME: "Brigade",
       SLACK_TITLE: "Hello from Brigade",
-      SLACK_MESSAGE: "This is a message from Brigade"
+      SLACK_MESSAGE: "This is a message from Brigade, the image with tag $IMAGETAG is in production"
    }
     slack.run()
   }
