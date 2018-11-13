@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name:  "{{ .Values.ratingapi.name }}-deploy"
+  labels:
+    name:  {{ .Values.ratingapi.name }}
+spec:
+  selector:
+    matchLabels:
+      name:  {{ .Values.ratingapi.name }}
+  replicas: {{ .Values.ratingapi.replicaCount }}
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        name:  {{ .Values.ratingapi.name }}
+    spec:
+      imagePullSecrets:
+        - name: acr-secret
+      containers:
+      - image: "{{ .Values.registry.server }}/{{ .Values.ratingapi.image.repository }}:{{ .Values.ratingapi.image.tag }}"
+        name:  "{{ .Values.ratingapi.name }}-cntnr"
+        resources:
+          requests:
+            cpu: {{ .Values.ratingapi.resources.cpu }}
+            memory: {{ .Values.ratingapi.resources.cpu }}
+        env:
+        - name: MONGODB_URI
+          valueFrom:
+            secretKeyRef:
+              name: "cosmosdb-secret"
+              key: mongodb_uri
+        ports:
+        - containerPort:  {{ .Values.ratingapi.ports.internal }}
+          name:  {{ .Values.ratingapi.name }}
+        imagePullPolicy: {{ .Values.ratingapi.image.pullPolicy }}
+        restartPolicy: {{ .Values.ratingapi.restartPolicy }}

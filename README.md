@@ -20,17 +20,39 @@ secrets:
     azServicePrincipal: 
     azClientSecret: 
     azTenant: 
-    OWNER: 
-    CONSUMER_KEY: 
-    CONSUMER_SECRET: 
-    ACCESS_TOKEN: 
-    ACCESS_SECRET: 
+    SLACK_WEBHOOK:
+```
+
+### Create AKS cluster
+```
+az aks create -g aks -c 2  -n brigade  -k 1.11.3
+az aks get-credentials -g aks -n brigade
+```
+
+### Install Brigade
+
+```
+helm repo add brigade https://azure.github.io/brigade
+helm install -n brigade brigade/brigade --set vacuum.enabled=false --set api.service.type=LoadBalancer
+```
+
+### Kashti
+```
+helm upgrade --install kashti https://raw.githubusercontent.com/ams0/itnext-brigade/master/helm/kashti/kashti-0.1.0.tgz  --set service.type=LoadBalancer
+```
+
+### Create Github webhook
+```
+export GH_WEBHOOK=http://$(kubectl get svc brigade-brigade-github-gw -o jsonpath='{.status.loadBalancer.ingress[0].ip}'):7744/events/github
+#make sure you have a GITHUB_AUTH_TOKEN env ~~variable~~
+jthooks add ams0/itnext-brigade $GH_WEBHOOK GithubSecret
 ```
 
 ### Useful links
 
+[Brigade](https://brigade.sh/)
 [Kashti](https://github.com/Azure/kashti)
 [Brigadeterm](https://github.com/slok/brigadeterm/releases)
-
+[jthooks](https://github.com/ceejbot/jthooks)
 
 Heavily based on the great work from [chzbrgr71](https://github.com/chzbrgr71/kube-con-2018)

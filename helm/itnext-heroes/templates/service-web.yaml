@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: web
+{{- if .Values.serviceweb.annotations }}
+  annotations:
+  {{- range $key, $value := .Values.serviceweb.annotations }}
+    {{ $key }}: {{ $value | quote }}
+  {{- end }}
+{{- end }}
+  labels:
+    name: web
+spec:
+  type: LoadBalancer
+  ports:
+  - name: http
+    port: {{ .Values.ratingweb.ports.external }}
+    targetPort: {{ .Values.ratingweb.ports.internal }}
+  selector:
+    name: {{ .Values.ratingweb.name }}
