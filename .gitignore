@@ -3,6 +3,8 @@
 .vscode
 **/.vscode
 
+**/env.sh
+
 brig-proj-itnext.yaml
 brig-proj-itnext-source.yaml
 brig-proj-itnext-source-eu.yaml

@@ -1,5 +1,7 @@
 # Azure Blackbelt voting app demo Helm chart (experimental)
 
+Make sure you have your environment variables set
+
 ```
 helm upgrade --install heroes . \
   --set registry.server=$ACR_NAME \
