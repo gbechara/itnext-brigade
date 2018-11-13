@@ -121,5 +121,6 @@ helm delete kashti --purge
 [jthooks](https://github.com/ceejbot/jthooks)
 [Build a brigade gateway in 5 minutes](http://technosophos.com/2018/04/23/building-brigade-gateways-the-easy-way.html)
 [Azure Cointainer Registry Builds](https://docs.microsoft.com/en-us/azure/container-registry/container-registry-tutorial-quick-task)
+[Draft](https://draft.sj)
 
 Heavily based on the great work from [chzbrgr71](https://github.com/chzbrgr71/kube-con-2018)
