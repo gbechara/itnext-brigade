@@ -45,7 +45,7 @@ events.on("push", (brigadeEvent, project) => {
 events.on("after", (event, project) => {
     console.log(event.payload)
     var m = "New image pushed with tag "
-    var gitSHA = brigadeEvent.revision.commit.substr(0,7)
+    var gitSHA = event.revision.commit.substr(0,7)
     var imageTag = "master-" + String(gitSHA)
 
     if (project.secrets.SLACK_WEBHOOK) {
