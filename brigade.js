@@ -22,7 +22,7 @@ events.on("push", (brigadeEvent, project) => {
     acr.tasks = [
         `cd /src/app/web`,
         `az login --service-principal -u ${azServicePrincipal} -p ${azClientSecret} --tenant ${azTenant}`,
-        `az acr build -t ${acrImage} --build-arg BUILD_DATE="${String(today)}" --build-arg VCS_REF=${gitSHA} --build-arg IMAGE_TAG_REF=${imageTag} -r ${acrName} -f app/web/Dockerfile https://github.com/ams0/itnext-brigade.git`
+        `az acr build -r ${acrName} -t ${acrImage} --build-arg BUILD_DATE="${String(today)}" --build-arg VCS_REF=${gitSHA} --build-arg IMAGE_TAG_REF=${imageTag}  -f app/web/Dockerfile https://github.com/ams0/itnext-brigade.git`
     ]
 
     var helm = new Job("job-runner-helm")
