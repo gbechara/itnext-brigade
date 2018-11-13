@@ -1,13 +1,14 @@
 # ITNext Summit 2018 Demo
 
-This is the source for the session I delivered at ITNext Summit in Amsterdam. https://www.itnextsummit.com/program-2018/
+This is the source for the session I delivered at ITNext Summit in Amsterdam. <https://www.itnextsummit.com/program-2018/>
 
+## Demo time
 
 ### Brigade Project Definition
 
 Sample `brig-proj-itnext.yaml` needed for demo. Ensure this file does not end up in GitHub!
 
-```
+```yaml
 project: "repo/itnext-brigade"
 repository: "github.com/repo/itnext-2018"
 cloneURL: "https://github.com/repo/itnext-2018"
@@ -15,23 +16,24 @@ sharedSecret: "password-replace"
 github:
     token: ""
 secrets:
-    acrServer: 
-    acrName: 
-    azServicePrincipal: 
-    azClientSecret: 
-    azTenant: 
+    acrServer:
+    acrName:
+    azServicePrincipal:
+    azClientSecret:
+    azTenant:
     SLACK_WEBHOOK:
 ```
 
 ### Create AKS cluster
-```
+
+```bash
 az aks create -g aks -c 2  -n brigade  -k 1.11.3
 az aks get-credentials -g aks -n brigade
 ```
 
 ### Install Brigade
 
-```
+```bash
 helm repo add brigade https://azure.github.io/brigade
 helm upgrade --install brigade brigade/brigade --set rbac.enabled=true --set vacuum.enabled=false --set api.service.type=LoadBalancer
 # workaround for RBAC
@@ -39,7 +41,8 @@ kubectl create clusterrolebinding brigade-worker --clusterrole=cluster-admin --s
 ```
 
 ### Kashti
-```
+
+```bash
     helm upgrade --install kashti \
     https://raw.githubusercontent.com/ams0/itnext-brigade/master/helm/kashti/kashti-0.1.0.tgz \
     --set service.type=LoadBalancer \
@@ -48,21 +51,35 @@ kubectl create clusterrolebinding brigade-worker --clusterrole=cluster-admin --s
 
 ### Create Brigade project
 
-```
+```bash
 helm upgrade --install  itnext-brigade brigade/brigade-project -f brig-proj-itnext.yaml
 ```
 
 ### Create Github webhook
-```
+
+```bash
 export GH_WEBHOOK=http://$(kubectl get svc brigade-brigade-github-gw -o jsonpath='{.status.loadBalancer.ingress[0].ip}'):7744/events/github
 #make sure you have a GITHUB_AUTH_TOKEN env ~~variable~~
 jthooks add ams0/itnext-brigade $GH_WEBHOOK GithubSecret
 ```
 
-### Clean up jobs and workers 
-```
+### Clean up jobs and workers
+
+```bash
 kubectl delete po -l component=job ; kubectl delete po -l component=build
 ```
+
+### Demo flow
+
+- [ ] Explain why in-cluster pipelines
+- [ ] Explain brigade.js steps
+- [ ] Push changes
+- [ ] Observe with `watch kubectl get pods`
+- [ ] Observe with kashti
+- [ ] Observe with `brigadeterm`
+- [ ] Clean up
+- [ ] Show the voting site, change the color, push
+- [ ] Observe the change
 
 ### Useful links
 
