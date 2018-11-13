@@ -20,6 +20,7 @@ events.on("push", (brigadeEvent, project) => {
     acr.storage.enabled = false
     acr.image = "ams0/az-cli-kubectl-helm:latest"
     acr.tasks = [
+        `ls`,
         `cd /src/app/web`,
         `az login --service-principal -u ${azServicePrincipal} -p ${azClientSecret} --tenant ${azTenant}`,
         `az acr build -r ${acrName} -t ${acrImage}  -f app/web/Dockerfile https://github.com/ams0/itnext-brigade.git`
