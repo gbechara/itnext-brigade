@@ -40,7 +40,10 @@ kubectl create clusterrolebinding brigade-worker --clusterrole=cluster-admin --s
 
 ### Kashti
 ```
-helm upgrade --install kashti https://raw.githubusercontent.com/ams0/itnext-brigade/master/helm/kashti/kashti-0.1.0.tgz  --set service.type=LoadBalancer
+    helm upgrade --install kashti \
+    https://raw.githubusercontent.com/ams0/itnext-brigade/master/helm/kashti/kashti-0.1.0.tgz \
+    --set service.type=LoadBalancer \
+    --set brigade.apiServer=http://brigade-brigade-api:7745
 ```
 
 ### Create Brigade project
