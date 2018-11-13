@@ -5,8 +5,8 @@ sharedSecret: "password-replace"
 github:
     token: ""
 secrets:
-    acrServer: 
-    acrName: 
+    acrServer: acrname.azurecr.io
+    acrName: acrname
     azServicePrincipal: 
     azClientSecret: 
     azTenant: 
