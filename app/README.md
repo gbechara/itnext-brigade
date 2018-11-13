@@ -8,3 +8,4 @@ az acr build --registry $ACR_NAME  --image itnext/rating-web:v1 --build-arg IMAG
 
 cd app/api
 az acr build --registry $ACR_NAME --image itnext/rating-api:v1 .
+
