@@ -27,6 +27,10 @@ secrets:
     ACCESS_SECRET: 
 ```
 
+### Useful links
+
+[Kashti](https://github.com/Azure/kashti)
+[Brigadeterm](https://github.com/slok/brigadeterm/releases)
 
 
 Heavily based on the great work from [chzbrgr71](https://github.com/chzbrgr71/kube-con-2018)
