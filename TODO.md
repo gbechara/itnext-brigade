@@ -1,4 +1,4 @@
 ### Todo
 
-- Add ImageTag to the Slack message
-- Avoid git clone in job-runners
+- [ ] Add ImageTag to the Slack message
+- [ ] Avoid git clone in job-runners
