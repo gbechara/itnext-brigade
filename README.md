@@ -45,10 +45,10 @@ kubectl create clusterrolebinding brigade-worker --clusterrole=cluster-admin --s
 ### Kashti
 
 ```bash
-    helm upgrade --install kashti \
-    https://raw.githubusercontent.com/ams0/itnext-brigade/master/helm/kashti/kashti-0.1.0.tgz \
-    --set service.type=LoadBalancer \
-    --set brigade.apiServer=http://brigade-brigade-api:7745
+helm upgrade --install kashti \
+https://raw.githubusercontent.com/ams0/itnext-brigade/master/helm/kashti/kashti-0.1.0.tgz \
+--set service.type=LoadBalancer \
+--set brigade.apiServer=http://brigade-brigade-api:7745
 ```
 
 ### Create Brigade project
@@ -68,7 +68,7 @@ jthooks add ams0/itnext-brigade $GH_WEBHOOK GithubSecret
 ### Clean up jobs and workers
 
 ```bash
-kubectl delete po -l component=job ; kubectl delete po -l component=build
+kubectl delete po,secret -l component=job ; kubectl delete po,secret -l component=build
 ```
 
 ### Draft
