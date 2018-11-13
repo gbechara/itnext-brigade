@@ -18,7 +18,7 @@ events.on("push", (brigadeEvent, project) => {
 
     var acr = new Job("job-runner-acr-builder")
     acr.storage.enabled = false
-    acr.image = "theregistry.azurecr.io/tools/az-cli-kubectl-helm:latest"
+    acr.image = "ams0/az-cli-kubectl-helm:latest"
     acr.tasks = [
         `cd /src/app/web`,
         `az login --service-principal -u ${azServicePrincipal} -p ${azClientSecret} --tenant ${azTenant}`,
@@ -27,7 +27,7 @@ events.on("push", (brigadeEvent, project) => {
 
     var helm = new Job("job-runner-helm")
     helm.storage.enabled = false
-    helm.image = "theregistry.azurecr.io/tools/az-cli-kubectl-helm:latest"
+    helm.image = "ams0/az-cli-kubectl-helm:latest"
     helm.tasks = [
         `helm upgrade --install --reuse-values heroes  ./helm/itnext-heroes  --set ratingweb.image.tag=${imageTag}`
     ]
