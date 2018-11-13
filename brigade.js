@@ -50,4 +50,4 @@ events.on("after", (event, project) => {
    }
     slack.run()
   }
-})
+)
