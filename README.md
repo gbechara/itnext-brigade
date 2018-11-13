@@ -58,7 +58,7 @@ jthooks add ams0/itnext-brigade $GH_WEBHOOK GithubSecret
 
 ### Clean up jobs and workers 
 ```
-kubeclt delete po -l component=job ; k delete po -l component=build
+kubectl delete po -l component=job ; kubectl delete po -l component=build
 ```
 
 ### Useful links
