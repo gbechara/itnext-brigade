@@ -23,7 +23,7 @@ events.on("push", (brigadeEvent, project) => {
         `git clone https://github.com/ams0/itnext-brigade.git`,
         `cd itnext-brigade/app/web`,
         `az login --service-principal -u ${azServicePrincipal} -p ${azClientSecret} --tenant ${azTenant}`,
-        `az acr build -r ${acrName} -t ${acrImage} --build-arg VCS_REF=${gitSHA} --build-arg IMAGE_TAG_REF=${imageTag} -f ./Dockerfile --context . `
+        `az acr build -r ${acrName} -t ${acrImage} --build-arg VCS_REF=${gitSHA} --build-arg IMAGE_TAG_REF=${imageTag} .`
     ]
 
     var helm = new Job("job-runner-helm")
