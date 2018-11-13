@@ -103,5 +103,6 @@ draft up
 [Kashti](https://github.com/Azure/kashti)
 [Brigadeterm](https://github.com/slok/brigadeterm/releases)
 [jthooks](https://github.com/ceejbot/jthooks)
+[Build a brigade gateway in 5 minutes](http://technosophos.com/2018/04/23/building-brigade-gateways-the-easy-way.html)
 
 Heavily based on the great work from [chzbrgr71](https://github.com/chzbrgr71/kube-con-2018)
