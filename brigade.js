@@ -43,14 +43,22 @@ events.on("push", (brigadeEvent, project) => {
 })
 
 events.on("after", (event, project) => {
+    console.log(e.payload)
+    var m = "New image pushed with tag "
+    var gitSHA = brigadeEvent.revision.commit.substr(0,7)
+    var imageTag = "master-" + String(gitSHA)
 
+    if (project.secrets.SLACK_WEBHOOK) {
     var slack = new Job("slack-notify", "technosophos/slack-notify:latest", ["/slack-notify"])
     slack.env = {
       SLACK_WEBHOOK: project.secrets.SLACK_WEBHOOK,
       SLACK_USERNAME: "Brigade",
       SLACK_TITLE: "Hello from Brigade",
-      SLACK_MESSAGE: "This is a message from Brigade"
+      SLACK_MESSAGE: m + imageTag,
    }
     slack.run()
+  } else {
+    console.log(m)
   }
+}
 )
