@@ -54,7 +54,10 @@ export GH_WEBHOOK=http://$(kubectl get svc brigade-brigade-github-gw -o jsonpath
 jthooks add ams0/itnext-brigade $GH_WEBHOOK GithubSecret
 ```
 
-
+### Clean up jobs and workers 
+```
+kubeclt delete po -l component=job ; k delete po -l component=build
+```
 
 ### Useful links
 
