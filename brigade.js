@@ -30,7 +30,9 @@ events.on("push", (brigadeEvent, project) => {
     helm.storage.enabled = false
     helm.image = "ams0/az-cli-kubectl-helm:latest"
     helm.tasks = [
-        `helm upgrade --install --reuse-values heroes  ./helm/itnext-heroes  --set ratingweb.image.tag=${imageTag}`
+        `git clone https://github.com/ams0/itnext-brigade.git`,
+        `cd itnext-brigade/helm`,
+        `helm upgrade --install --reuse-values heroes  ./itnext-heroes  --set ratingweb.image.tag=${imageTag}`
     ]
 
     var pipeline = new Group()
