@@ -43,6 +43,9 @@ helm upgrade --install kashti https://raw.githubusercontent.com/ams0/itnext-brig
 
 ### Create Brigade project
 
+```
+helm upgrade --install  itnext-brigade brigade/brigade-project -f brig-proj-itnext.yaml
+```
 
 ### Create Github webhook
 ```
