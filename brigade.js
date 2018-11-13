@@ -20,10 +20,7 @@ events.on("push", (brigadeEvent, project) => {
     acr.storage.enabled = false
     acr.image = "ams0/az-cli-kubectl-helm:latest"
     acr.tasks = [
-        `cd /src`,
-        `ls`,
-        `git clone https://github.com/ams0/itnext-brigade.git`,
-        `cd itnext-brigade/app/web`,
+        `cd /src/app/web`,
         `az login --service-principal -u ${azServicePrincipal} -p ${azClientSecret} --tenant ${azTenant}`,
         `az acr build -r ${acrName} -t ${acrImage} --build-arg VCS_REF=${gitSHA} --build-arg IMAGE_TAG_REF=${imageTag} .`
     ]
@@ -32,8 +29,7 @@ events.on("push", (brigadeEvent, project) => {
     helm.storage.enabled = false
     helm.image = "ams0/az-cli-kubectl-helm:latest"
     helm.tasks = [
-        `git clone https://github.com/ams0/itnext-brigade.git`,
-        `cd itnext-brigade/helm`,
+        `cd /src/helm`,
         `helm upgrade --install --reuse-values heroes  ./itnext-heroes  --set ratingweb.image.tag=${imageTag}`
     ]
 
