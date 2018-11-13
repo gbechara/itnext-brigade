@@ -29,8 +29,15 @@ secrets:
 ```bash
 az aks create -g aks -c 2  -n brigade  -k 1.11.3
 az aks get-credentials -g aks -n brigade
-#Helm one liner 
+#Helm one liner
 kubectl create serviceaccount -n kube-system tiller; kubectl create clusterrolebinding tiller --clusterrole=cluster-admin --serviceaccount=kube-system:tiller; helm init --service-account tiller
+```
+
+### Create an Azure Container Registry and a service principal
+
+```bash
+az acr create -g MyresourceGroup - MyRegistry
+az ad sp create-for-rbac --scopes /subscriptions/12c7e9d6-967e-40c8-8b3e-4659a4ada3ef/resourceGroups/MyresourceGroup/providers/Microsoft.ContainerRegistry/registries/MyRegistry --name registryaccess -o json
 ```
 
 ### Install Brigade
