@@ -10,8 +10,4 @@ secrets:
     azServicePrincipal: 
     azClientSecret: 
     azTenant: 
-    OWNER: 
-    CONSUMER_KEY: 
-    CONSUMER_SECRET: 
-    ACCESS_TOKEN: 
-    ACCESS_SECRET: 
+    SLACK_WEBHOOK:
