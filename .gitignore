@@ -3,6 +3,7 @@
 .vscode
 **/.vscode
 **/package-lock.json
+**/**.pptx
 
 **/env.sh
 

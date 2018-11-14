@@ -45,6 +45,8 @@ az ad sp create-for-rbac --scopes /subscriptions/12c7e9d6-967e-40c8-8b3e-4659a4a
 ```bash
 helm repo add brigade https://azure.github.io/brigade
 helm upgrade --install brigade brigade/brigade --set rbac.enabled=true --set vacuum.enabled=false --set api.service.type=LoadBalancer
+```
+```bash
 # workaround for RBAC
 kubectl create clusterrolebinding brigade-worker --clusterrole=cluster-admin --serviceaccount=default:brigade-worker
 ```
